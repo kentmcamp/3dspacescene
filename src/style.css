@@ -30,9 +30,14 @@ body {
     background: transparent url(./images/nebula.png) repeat top center;
     z-index: -1;
     opacity: 0.15;
+    animation: moveNebula 100s linear infinite alternate;
 }
 
 @keyframes coverStars {
     from {background-position: 0 0;}
     to {background-position: -10000px 5000px;}
+}
+@keyframes moveNebula {
+    from {background-position: 0 0;}
+    to {background-position: 700px 0;}
 }
