@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./src/style.css" />
     <title>Three.js Earth and Moon</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/PointerLockControls.js"></script>
   </head>
   <body>
     <div id="app">
@@ -13,6 +14,16 @@
       <div class="backgroundItems alpha"></div>
       <div class="backgroundItems nebula"></div>
     </div>
+
+    <audio autoplay loop>
+      <source src="/spaceSong.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio autoplay loop>
+      <source src="/space.mp3" type="audio/mpeg">
+    </audio>
+
+
     <script type="module" src="./src/earth.js"></script>
   </body>
 </html>
