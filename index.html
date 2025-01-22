@@ -7,6 +7,7 @@
     <title>Three.js Earth and Moon</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/PointerLockControls.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
   <body>
     <div id="app">
@@ -15,15 +16,28 @@
       <div class="backgroundItems nebula"></div>
     </div>
 
-    <audio autoplay>
+    <audio id="audio1" loop>
       <source src="/spaceSong.mp3" type="audio/mpeg">
     </audio>
 
-    <audio autoplay loop>
+    <audio id="audio2" loop>
       <source src="/space.mp3" type="audio/mpeg">
     </audio>
 
+    <button onclick="playAudio()"><i class="fas fa-play"></i></button>
+    <button onclick="stopAudio()"><i class="fas fa-stop"></i></button>
 
     <script type="module" src="./src/earth.js"></script>
+    <script>
+      function playAudio() {
+        document.getElementById('audio1').play();
+        document.getElementById('audio2').play();
+      }
+
+      function stopAudio() {
+        document.getElementById('audio1').pause();
+        document.getElementById('audio2').pause();
+      }
+    </script>
   </body>
 </html>

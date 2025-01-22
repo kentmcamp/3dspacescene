@@ -41,3 +41,19 @@ body {
     from {background-position: 0 0;}
     to {background-position: 700px 0;}
 }
+
+button {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 5px 10px;
+    font-size: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
