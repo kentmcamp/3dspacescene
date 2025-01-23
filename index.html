@@ -16,27 +16,14 @@
       <div class="backgroundItems nebula"></div>
     </div>
 
-    <audio id="audio1" loop>
-      <source src="./public/spaceSong.mp3" type="audio/mpeg">
-    </audio>
-
-    <audio id="audio2" loop>
-      <source src="./public/space.mp3" type="audio/mpeg">
-    </audio>
-
-    <button onclick="playAudio()"><i class="fas fa-play"></i></button>
-    <button onclick="stopAudio()"><i class="fas fa-stop"></i></button>
+    <div class="button-container">
+      <button onclick="startAudioContext()"><i class="fas fa-play"> </i> Start Scene</button>
+    </div>
 
     <script type="module" src="./src/earth.js"></script>
     <script>
-      function playAudio() {
-        document.getElementById('audio1').play();
-        document.getElementById('audio2').play();
-      }
-
-      function stopAudio() {
-        document.getElementById('audio1').pause();
-        document.getElementById('audio2').pause();
+      function startAudioContext() {
+          threejs();
       }
     </script>
   </body>

@@ -18,9 +18,8 @@ function threejs() {
     light.shadow.mapSize.height = 1024;
     light.shadow.camera.near = 0;
     light.shadow.camera.far = 50;
-    light.shadow.darkness = 0.1;
 
-    // Create pivot group for Moon's orbit
+    // Grouped Earth and Moon together to use Earth as a pivot for the Moon's orbit
     var pivot = new THREE.Group();
     scene.add(pivot);
 
@@ -29,9 +28,24 @@ function threejs() {
         planet.receiveShadow = true;
         scene.add(planet);
 
+        var listener = new THREE.AudioListener();
+        camera.add(listener);
+
+        var sound = new THREE.PositionalAudio(listener);
+
+        var audioLoader = new THREE.AudioLoader();
+        audioLoader.load('./public/space.mp3', function (buffer) {
+            sound.setBuffer(buffer);
+            sound.setRefDistance(0.75);
+            sound.setLoop(true);
+            sound.setVolume(0.5);
+            sound.play();
+        });
+
         getSphere(0.1, 32, 32, 'src/images/moonTexture.jpg', function (moon) {
             moon.position.set(1.75, 0, 0);
             pivot.add(moon);
+            moon.add(sound);
 
             camera.position.set(1.4, -0.2, 2);
 
@@ -45,16 +59,17 @@ function threejs() {
             animate();
         });
     });
+
+    function getSphere(w, h, d, texture, onLoadCallback) {
+        var geometry = new THREE.SphereGeometry(w, h, d);
+        var textureLoader = new THREE.TextureLoader();
+        textureLoader.load(texture, function (texture) {
+            var material = new THREE.MeshStandardMaterial({ map: texture });
+            var sphere = new THREE.Mesh(geometry, material);
+            onLoadCallback(sphere);
+        });
+    }
 }
 
-function getSphere(w, h, d, texture, onLoadCallback) {
-    var geometry = new THREE.SphereGeometry(w, h, d);
-    var textureLoader = new THREE.TextureLoader();
-    textureLoader.load(texture, function (texture) {
-        var material = new THREE.MeshStandardMaterial({ map: texture });
-        var sphere = new THREE.Mesh(geometry, material);
-        onLoadCallback(sphere);
-    });
-}
-
-threejs();
+// Expose the threejs function to the global scope
+window.threejs = threejs;
