@@ -38,7 +38,7 @@ function threejs() {
             sound.setBuffer(buffer);
             sound.setRefDistance(0.75);
             sound.setLoop(true);
-            sound.setVolume(0.5);
+            sound.setVolume(0.2);
             sound.play();
         });
 
@@ -48,6 +48,17 @@ function threejs() {
             moon.add(sound);
 
             camera.position.set(1.4, -0.2, 2);
+
+            // Mouse Look Controls
+            var controls = new THREE.PointerLockControls(camera, document.body);
+
+            document.addEventListener('click', function () {
+                if (!controls.isLocked) {
+                    controls.lock();
+                }
+            });
+
+             scene.add(controls.getObject());
 
             function animate() {
                 requestAnimationFrame(animate);
@@ -71,5 +82,5 @@ function threejs() {
     }
 }
 
-// Expose the threejs function to the global scope
+
 window.threejs = threejs;
