@@ -23,7 +23,7 @@ function threejs() {
     var pivot = new THREE.Group();
     scene.add(pivot);
 
-    getSphere(1, 64, 64, 'src/images/planetTexture2.jpg', function (planet) {
+    getSphere(1, 64, 64, 'src/images/planetTexture.webp', function (planet) {
         planet.castShadow = true;
         planet.receiveShadow = true;
         scene.add(planet);
@@ -42,7 +42,7 @@ function threejs() {
             sound.play();
         });
 
-        getSphere(0.1, 32, 32, 'src/images/moonTexture.jpg', function (moon) {
+        getSphere(0.1, 32, 32, 'src/images/moonTexture.webp', function (moon) {
             moon.position.set(1.75, 0, 0);
             pivot.add(moon);
             moon.add(sound);
